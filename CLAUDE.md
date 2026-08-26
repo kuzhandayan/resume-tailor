@@ -11,7 +11,8 @@ Nothing about the layout is under discussion.
 | `base_stable_template.tex` | THE BASE. **Read-only. Never edit, never delete.** |
 | `master.md` | Full career inventory. The **only** source of factual claims. |
 | `jd/<slug>.md` | Job description I paste in. |
-| `out/<slug>.tex` | Your generated output. |
+| `out/<slug>.tex` | Your generated output for a normal, well-matched JD. |
+| `out/stretch/<slug>.tex` | Your generated output for a stretch JD (see Rule 7). **Frozen the moment it's written.** |
 | `log.md` | Running record of every resume generated. |
 
 ## Trigger
@@ -19,9 +20,13 @@ When I paste a job description (in chat or as a file), you:
 1. Derive a slug yourself: `<company-kebab>-<role-kebab>`
    e.g. `wysa-associate-fullstack-engineer`, `leucine-full-stack-engineer`
 2. Save the JD to `jd/<slug>.md`
-3. Copy `base_stable_template.tex` → `out/<slug>.tex`
-4. Tailor `out/<slug>.tex` per the rules below
-5. Report (see **Output**)
+3. Decide if this JD is a **normal match** or a **stretch JD** (Rule 7) — a
+   stretch JD is one asking for skills/domain outside my current work or
+   skill set as recorded in `master.md`.
+4. Normal match: copy `base_stable_template.tex` → `out/<slug>.tex`.
+   Stretch JD: copy `base_stable_template.tex` → `out/stretch/<slug>.tex`.
+5. Tailor per the rules below (Rule 7 modifies keyword rules for stretch JDs).
+6. Report (see **Output**)
 
 If I paste several JDs at once, process each **independently, from the base**.
 Never chain one tailored resume off another.
@@ -119,6 +124,55 @@ keyword without breaking a cap, it goes in Gaps — not in the resume.
 
 ---
 
+## RULE 7 — Stretch JDs (unrelated to my current work or skills)
+
+Sometimes I'll paste a JD for a role I'm not currently qualified for on paper —
+different domain, different stack, skills I'm still learning. I intend to
+close that gap myself before any interview (self-study, prep). These get
+different handling:
+
+1. **Detect it.** A stretch JD is one where the core requirements don't match
+   `master.md`'s "shipped to production" or "used in side projects" tiers —
+   it leans on the "learning / read about" tier, or something not in
+   `master.md` at all.
+2. **Output goes to `out/stretch/<slug>.tex`, never `out/<slug>.tex`.**
+3. **Rules 1, 2, and 3 still apply in full — no exceptions here.** Frozen
+   zones stay frozen, editable zones stay the only things touched, and every
+   Rule 3 structural cap (one page, exact bullet counts, byte-size ceiling,
+   etc.) is enforced exactly as for a normal resume. A stretch JD changes
+   WHAT keywords are honest to use — never the layout, structure, or length.
+   No new UI, no new sections, no font/spacing tricks to fit more in.
+   `base_stable_template.tex` itself is NEVER touched — for a stretch JD you
+   still only ever copy from it into `out/stretch/<slug>.tex`, exactly like
+   the normal flow. There is no scenario, stretch or otherwise, where the
+   base template gets edited.
+4. **Relaxed keyword rule, this tier only:** you may list skills from the
+   "learning / read about" tier in the skills row / bullets as if in active
+   use, since I plan to actually learn them before an interview. This is the
+   ONE exception to Rule 5.6 (no stuffing) and to treating "learning" as
+   Gaps-only.
+5. **Everything else in Rule 4 (Truth) still holds, no exceptions:**
+   - Never invent an employer, project, date, team size, or metric.
+   - Never change "2.6 years" or imply more experience than I have.
+   - Never claim ownership/authorship of something `master.md` says was a
+     teammate's work, or something with no evidence at all.
+   - The "stretch" allowance is about **skills I intend to learn**, not about
+     fabricating history.
+6. **Frozen on write — this is absolute, stronger than the base-template
+   freeze:**
+   - The moment `out/stretch/<slug>.tex` is written, it is frozen forever.
+   - **No agent may ever edit, regenerate, or overwrite it again** — not on a
+     follow-up request, not to "fix" something, not even if I ask casually.
+     If I want changes, I edit it myself.
+   - **Never `git add`, `git commit`, or `git push` anything under
+     `out/stretch/`.** These files stay untracked/local-only unless I
+     explicitly do it myself.
+   - If I ask you to touch an existing file under `out/stretch/`, refuse and
+     remind me this folder is locked — don't ask "are you sure," just decline
+     and tell me why.
+
+---
+
 ## Output
 
 Write the file, then report in chat — **do not print the .tex**:
@@ -137,3 +191,5 @@ Then append one row to `log.md`:
 - Never start from a previous `out/*.tex`
 - Never shrink font, margins, or spacing to fit
 - Never write a cover letter unless I ask
+- Never edit, regenerate, or overwrite anything under `out/stretch/` once written
+- Never `git add`/`commit`/`push` anything under `out/stretch/`
