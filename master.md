@@ -104,23 +104,25 @@ Rule: if it isn't in this file, it does not go on a resume.
 - Cloud-based multi-tenant restaurant POS/management platform, one codebase, unlimited isolated tenants. Full order lifecycle, automatic GST (CGST+SGST), live inventory, 5 staff roles, platform-wide admin panel.
 - Tech: Next.js 16, React 19, TypeScript, Prisma 7, PostgreSQL, NextAuth, Tailwind CSS v4, Docker.
 - Link: dine-flow-app.vercel.app.
-- `[VERIFY]`: any real usage beyond the demo (test restaurants, transactions processed)?
+- **Usage — per user:** currently demo-stage only. Built with multi-tenant/shared-database architecture with the intent to eventually run it for the user's own restaurant business, but no real restaurant/transaction volume yet. Honest resume phrasing: describe as a built/live demo product, not as having real production usage — do not imply live paying customers or transaction volume.
 
 ### envault — Zero-Knowledge Secrets CLI
 - CLI syncing `.env` files across machines via a private GitHub repo as storage, zero-knowledge (GitHub token + master password, password never stored).
 - AES-256-GCM, 15 commands, 8 dependencies, published live on npm.
 - Links: npm (envault-sync), docs (kuzhandayan.github.io/envault-docs).
-- `[VERIFY]`: install/download count, any external users.
+- **Usage — per user, npm stats screenshot confirms:** npm shows 173 downloads in a single week (2026-07-01 to 2026-07-07, a spike), with smaller weekly numbers since; user's own running total estimate is **~250 downloads as of now**. Caveat for resume wording: npm download counts include CI/bot traffic, not just distinct human users — safe resume phrasing is "~250 npm downloads" or "250+ installs," not "250 users," unless real distinct-user data exists (it doesn't).
 
 ### Finio — Personal Finance Mobile App
 - Fully on-device Flutter app, no financial data leaves the phone. Auto-reads Indian bank/UPI SMS, categorizes transactions, budgets, Excel/PDF export. "Cristy AI v0.1" — own model layer for spending analysis.
 - Tech: Flutter, Dart, sqflite, Provider, Google Drive API, Google Sign-In, WorkManager.
 - **Cristy AI — VERIFIED by user, no longer [VERIFY]:** self-hosted, local LLM via Ollama running a Qwen model (~Qwen 2.5/3.5 class), with some custom adaptation/prompting layered on top of the base model for the finance-analysis use case — not a from-scratch trained model, not a hosted third-party API. Honest resume phrasing: "self-hosted local LLM (Ollama, Qwen) with custom prompting/adaptation for on-device financial analysis" — do not claim "custom-trained model" or "proprietary AI model," since the base model is Qwen and the customization is adaptation/prompting, not full fine-tuning from scratch (confirm with user if actual fine-tuning was done vs prompt/context engineering only — currently understood as the latter).
+- **Usage — per user:** private, ~10–15 users (family and friends only). Honest resume phrasing: describe as built/functional and in personal use, not as having broad/public adoption.
 
 ---
 
 ## Hackathons & side builds
-- **ShareGoto** — blockchain real estate tokenization (NFTs, fractional ownership). Office hackathon, Winner, Aug 2025. Next.js, Solidity, PostgreSQL, Web3, MetaMask, ERC-721. `[VERIFY]`: confirm exact relationship between "HackGoto" (the achievement name on the current resume) and "ShareGoto" (the project name on the portfolio) — same event, different labels?
+- **ShareGoto** — blockchain real estate tokenization (NFTs, fractional ownership). Office hackathon, Winner, Aug 2025. Next.js, Solidity, PostgreSQL, Web3, MetaMask, ERC-721.
+- **HackGoto** — CONFIRMED by user as a separate, distinct hackathon win from ShareGoto (different event, different timing/month). Base resume's existing achievement text ("led a four-member team to build an enterprise solution during the company hackathon, secured first place") stays attributed to HackGoto specifically, not ShareGoto. Both are real, keep both as separate achievements.
 - **Agent Goto** — AI agent using MCP + vector DB, Cityscape Global 2025 Finalist, Riyadh. Matches current resume's achievement bullet as-is.
 - **Momentum** — Flask + Instagram/LinkedIn automation, Gemini API content generation. Not on base resume — swappable project candidate for Python/AI-flavored JDs.
 - **Bus Tracking System** — React + Django real-time tracking, Leaflet.js. Not on base resume — swappable candidate; only place Django experience shows up.
@@ -145,7 +147,8 @@ The pa-cron scheduler/timezone engine itself (teammate's work, no pairing claime
 ---
 
 ## Achievements
-- HackGoto 2025 Winner — `[VERIFY naming vs ShareGoto, see above]`.
+- HackGoto 2025 Winner — led a four-member team to build an enterprise solution during the company hackathon, secured first place. Confirmed as a distinct event from ShareGoto.
+- ShareGoto — Aug 2025 office hackathon win, blockchain real estate tokenization project. Currently only on the portfolio/projects list, not the resume's Achievements section — could be added as a third achievement or kept as a project depending on space (Rule 3 caps Achievements at exactly 2 items).
 - Cityscape Global 2025 Finalist, Riyadh — Agent Goto, MCP + vector DB. Verified against portfolio.
 
 ## Certifications (not on resume — backup/Gaps only)
