@@ -93,7 +93,7 @@ Rule: if it isn't in this file, it does not go on a resume.
 ## Next Wave ERP internship (Jun–Aug 2023)
 - Role: Data Analytics Intern, Thiruvallur, India.
 - Data analysis, visualization, and reporting using Python, Excel, and Tableau. Built dashboards surfacing key trends; prepared recurring reports for non-technical stakeholders.
-- `[VERIFY]`: dataset size, number of dashboards, any specific business decision influenced — no way to verify this from code (no repo access), needs your recall.
+- `[no metric]` — user has no recall of dataset size, dashboard count, or a specific decision influenced. Keep the existing generic bullets as-is; do not add a fabricated number.
 
 ---
 
@@ -176,6 +176,7 @@ The pa-cron scheduler/timezone engine itself (teammate's work, no pairing claime
 5. The portfolio's AI/ChromaDB semantic-search claim for the core API has no code evidence in `backend-server` — needs locating or dropping.
 
 **Resolved via interview:**
+- Mentoring: ~5-6 junior engineers on the team, via pairing and code review — for anyone on the team, the user reviews/verifies their work when they return a task. Confirms and strengthens the existing base-resume mentoring claim with a concrete number.
 - Cristy AI (Finio) = self-hosted Ollama running a Qwen model, with custom adaptation/prompting for financial analysis — not a from-scratch trained model, not a hosted API.
 - TOTP/2FA and CRA→Vite migration: user paired on implementation, teammate held the commit — kept on resume as collaborative work, worded as "collaborated on" not "built"/"led" solo.
 
