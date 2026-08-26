@@ -40,14 +40,16 @@ Rule: if it isn't in this file, it does not go on a resume.
 
 ### Authentication & identity (`pa-auth`)
 - **What it is:** Standalone Fastify microservice — signup, login, OTP, TOTP 2FA, per-tenant dynamic DB connections (one Knex connection per tenant, built lazily per-request, no pooling/warm-up at startup).
-- **My scope — CORRECTED, this is the biggest correction:** 284 of 2,872 commits (~10%), one of ~10 heavy contributors. My real, evidenced footprint is **RBAC/route/menu seed-data maintenance** (222 of my file-touches are in one seeder file, `db/seeders/repositories.js`) and **cross-product bug fixes** across coworkGoto/LeaseGoto/realtyGoto config. **TOTP 2FA was built by a teammate (srilayaa-propgoto), and the maintenance-lock-during-restore feature was built by a different teammate (vigneshcrayond) — I have zero commits on either file.** Do not claim authorship of 2FA or the restore lock.
-- **Fastify vs Express:** documented in the repo's own CLAUDE.md as a deliberate divergence from sibling services, but no rationale is recorded anywhere and it's not attributable to a decision I made. `[VERIFY]` if you personally made or influenced this call — otherwise leave the "why" out of any interview answer about it.
-- **Resume-ready bullet (corrected, honest scope):** "Maintained the multi-tenant RBAC and route/module reference data (roles, menus, permissions) for a standalone Fastify identity microservice serving all tenants, and resolved cross-product configuration and login-flow bugs across the platform's product lines."
+- **My scope — CORRECTED:** 284 of 2,872 commits (~10%), one of ~10 heavy contributors. My real, evidenced footprint is **RBAC/route/menu seed-data maintenance** (222 of my file-touches are in one seeder file, `db/seeders/repositories.js`) and **cross-product bug fixes** across coworkGoto/LeaseGoto/realtyGoto config.
+- **TOTP 2FA — pair-implemented, not solo-authored:** commit is under a teammate (srilayaa-propgoto), but per user: they paired on the implementation — drove/contributed code during the build, teammate held the actual commit. Defensible resume phrasing: "collaborated on implementing TOTP-based 2FA" — never "built" or "designed" solo, and be ready to walk through the actual TOTP flow (library: `speakeasy`, `window:1`) in an interview since the git trail alone won't back up more than that.
+- **Maintenance-lock-during-restore (vigneshcrayond's commit) — no pairing claimed by user for this one.** Do not put this on the resume; it's a separate feature from TOTP and nothing ties the user to it.
+- **Fastify vs Express:** documented in the repo's own CLAUDE.md as a deliberate divergence from sibling services, but no rationale is recorded anywhere and it's not attributable to a decision the user made. `[VERIFY]` if the user personally made or influenced this call — otherwise leave the "why" out of any interview answer about it.
+- **Resume-ready bullet (corrected, honest scope):** "Maintained the multi-tenant RBAC and route/module reference data (roles, menus, permissions) for a standalone Fastify identity microservice serving all tenants, collaborated on implementing TOTP-based two-factor authentication, and resolved cross-product configuration and login-flow bugs across the platform's product lines."
 
 ### Manager web app & job engine (`manager-app`)
 - **What it is:** React 18 (now Vite) SPA property managers live in — leasing, portfolio, finance dashboards, HR, maintenance. i18next localization, 5 locales confirmed in code (en-US, en-UK, ar, fr, es).
 - **My scope — VERIFIED + CORRECTED:** 1,032 of 34,687 commits (~3%), heaviest in `src/screens` (job execution type / pre-post checklists, AMC/insurance/depreciation UI, common-area-unit creation). Real, representative shipped features: unit-readiness pre/post checklists with attachments, job-type execution collision handling, AMC/insurance/depreciation screens, common-area-unit upsert flow.
-- **CORRECTED — CRA→Vite migration was NOT me.** Authored by a teammate (a.raslan); my only related commit is a documentation note. Don't claim this migration.
+- **CRA→Vite migration — pair-implemented, not solo-authored:** the migration commit is under a teammate (a.raslan), but per user: they paired on it, teammate held the commit; user's own tracked commit is a follow-up documentation note (Vite config known-issue writeup). Defensible resume phrasing: "collaborated on migrating the build tooling from CRA to Vite" — never "led" or "migrated" solo, and be ready to speak to the actual Vite config specifics (custom esbuild JSX-in-.js plugin, `@mui/styles` alias shimming, `nodePolyfills`) since that's the one piece directly evidenced as the user's own work.
 - **CORRECTED — the job scheduler is not in this repo.** It lives entirely in `pa-cron` (confirmed by this repo's own docs). Don't describe the scheduler as part of manager-app work.
 - **CORRECTED — "frontend became a pure display layer over one endpoint" is not evidenced.** The escalation/pricing feature branch has 30+ contributing branches; I'm not a top contributor to it in this repo — my only touch is one modal date-handling fix. The actual pricing-logic move (frontend→backend) is real and verified (see Core API section above), but I did not do the corresponding frontend simplification work myself — don't claim that half of the story.
 - **VERIFIED — real bug fixes:** several ticketed fixes (table pagination resets, Arabic status-chip color bug, contacts search empty-state, property-wallet dropdown filtering) — legitimate scoped fixes, not large refactors.
@@ -113,7 +115,7 @@ Rule: if it isn't in this file, it does not go on a resume.
 ### Finio — Personal Finance Mobile App
 - Fully on-device Flutter app, no financial data leaves the phone. Auto-reads Indian bank/UPI SMS, categorizes transactions, budgets, Excel/PDF export. "Cristy AI v0.1" — own model layer for spending analysis.
 - Tech: Flutter, Dart, sqflite, Provider, Google Drive API, Google Sign-In, WorkManager.
-- `[VERIFY]`: what is Cristy AI actually — a fine-tuned/local model, a prompted LLM API wrapper, or rule-based logic? Matters for how honestly "AI-powered" can be worded.
+- **Cristy AI — VERIFIED by user, no longer [VERIFY]:** self-hosted, local LLM via Ollama running a Qwen model (~Qwen 2.5/3.5 class), with some custom adaptation/prompting layered on top of the base model for the finance-analysis use case — not a from-scratch trained model, not a hosted third-party API. Honest resume phrasing: "self-hosted local LLM (Ollama, Qwen) with custom prompting/adaptation for on-device financial analysis" — do not claim "custom-trained model" or "proprietary AI model," since the base model is Qwen and the customization is adaptation/prompting, not full fine-tuning from scratch (confirm with user if actual fine-tuning was done vs prompt/context engineering only — currently understood as the latter).
 
 ---
 
@@ -129,13 +131,13 @@ Rule: if it isn't in this file, it does not go on a resume.
 *(honesty pass pending — see open questions below; this tiering reflects the verification pass so far)*
 
 ### Shipped to production — verified by code
-JavaScript, TypeScript, Python, SQL, React, Node.js, Express, PostgreSQL, FastAPI, REST APIs, RabbitMQ, JWT-adjacent auth work (RBAC/route data, not the 2FA implementation itself), Docker (modest — version bump + small tweaks), Git, GitHub, i18next, Material UI (MUI), Objection.js, boto3-style object storage against S3-compatible APIs.
+JavaScript, TypeScript, Python, SQL, React, Node.js, Express, PostgreSQL, FastAPI, REST APIs, RabbitMQ, JWT-adjacent auth work (RBAC/route data), TOTP-based 2FA (pair-implemented — can speak to `speakeasy`/TOTP flow, not solo-authored), Vite build tooling (pair-implemented + own config-issue documentation), Docker (modest — version bump + small tweaks), Git, GitHub, i18next, Material UI (MUI), Objection.js, self-hosted LLMs via Ollama (Qwen), boto3-style object storage against S3-compatible APIs.
 
 ### Used in side projects only
 Dart, Flutter, Next.js, Prisma, Tailwind CSS, shadcn/ui, NextAuth, Solidity, Web3/MetaMask, ERC-721, Flask, Gemini API, Django, Leaflet.js, sqflite, Google Drive API.
 
-### Corrected out of "shipped to production" — not evidenced as your work
-TOTP/2FA implementation logic (teammate's work), CRA→Vite migration (teammate's work), the pa-cron scheduler/timezone engine (teammate's work), real AWS EC2/S3 (only OCI's S3-compatible API is evidenced), ChromaDB/OpenAI semantic search (not found in any investigated repo — locate or drop).
+### Corrected — not evidenced as your work at all, still don't claim
+The pa-cron scheduler/timezone engine itself (teammate's work, no pairing claimed), the maintenance-lock-during-restore feature (teammate's work, no pairing claimed), real AWS EC2 (no evidence found anywhere — only OCI's S3-compatible API is evidenced), ChromaDB/OpenAI semantic search (not found in any investigated repo — locate or drop).
 
 ### Learning / read about — NEVER on resume, Gaps only
 `[VERIFY in interview]`
@@ -170,10 +172,13 @@ TOTP/2FA implementation logic (teammate's work), CRA→Vite migration (teammate'
 4. "AWS (EC2, S3)" in the tools row is not accurate — the real integration is Oracle Cloud's S3-compatible API via boto3. No EC2 evidence anywhere.
 5. The portfolio's AI/ChromaDB semantic-search claim for the core API has no code evidence in `backend-server` — needs locating or dropping.
 
+**Resolved via interview:**
+- Cristy AI (Finio) = self-hosted Ollama running a Qwen model, with custom adaptation/prompting for financial analysis — not a from-scratch trained model, not a hosted API.
+- TOTP/2FA and CRA→Vite migration: user paired on implementation, teammate held the commit — kept on resume as collaborative work, worded as "collaborated on" not "built"/"led" solo.
+
 **Open questions still needing your input (not derivable from code):**
 - Next Wave internship: dataset size, dashboard count, any decision influenced.
 - DineFlow/envault/Finio: any real usage numbers beyond the demo/npm listing.
-- Finio: what Cristy AI actually is under the hood.
 - HackGoto vs ShareGoto naming — same thing, different label?
 - Skills honesty pass — final tiering confirmation, especially anything in "learning/read about."
 - Collections & reconciliation module — which repo, not yet verified.
