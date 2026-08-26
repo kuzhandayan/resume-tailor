@@ -124,7 +124,7 @@ Rule: if it isn't in this file, it does not go on a resume.
 - **ShareGoto** — blockchain real estate tokenization (NFTs, fractional ownership). Office hackathon, Winner, Aug 2025. Next.js, Solidity, PostgreSQL, Web3, MetaMask, ERC-721.
 - **HackGoto** — CONFIRMED by user as a separate, distinct hackathon win from ShareGoto (different event, different timing/month). Base resume's existing achievement text ("led a four-member team to build an enterprise solution during the company hackathon, secured first place") stays attributed to HackGoto specifically, not ShareGoto. Both are real, keep both as separate achievements.
 - **Agent Goto** — AI agent using MCP + vector DB, Cityscape Global 2025 Finalist, Riyadh. Matches current resume's achievement bullet as-is.
-- **Momentum** — Flask + Instagram/LinkedIn automation, Gemini API content generation. Not on base resume — swappable project candidate for Python/AI-flavored JDs.
+- **Momentum** — Flask + Instagram/LinkedIn automation, Gemini API content generation. **Fully built by user (per interview), never publicly hosted — released as open-source code instead.** Flow: user connects Instagram/WhatsApp/Meta-linked accounts and LinkedIn, gives a text prompt describing what they want posted, Gemini generates an image from that prompt, and a cron-driven scheduler automatically posts the generated content on the connected platforms. Not on base resume — strong swappable project candidate for Python/AI-flavored JDs, since it demonstrates prompt-to-image generation + scheduled multi-platform posting end-to-end.
 - **Bus Tracking System** — React + Django real-time tracking, Leaflet.js. Not on base resume — swappable candidate; only place Django experience shows up.
 
 ---
@@ -136,13 +136,15 @@ Rule: if it isn't in this file, it does not go on a resume.
 JavaScript, TypeScript, Python, SQL, React, Node.js, Express, PostgreSQL, FastAPI, REST APIs, RabbitMQ, JWT-adjacent auth work (RBAC/route data), TOTP-based 2FA (pair-implemented — can speak to `speakeasy`/TOTP flow, not solo-authored), Vite build tooling (pair-implemented + own config-issue documentation), Docker (modest — version bump + small tweaks), Git, GitHub, i18next, Material UI (MUI), Objection.js, self-hosted LLMs via Ollama (Qwen), boto3-style object storage against S3-compatible APIs.
 
 ### Used in side projects only
-Dart, Flutter, Next.js, Prisma, Tailwind CSS, shadcn/ui, NextAuth, Solidity, Web3/MetaMask, ERC-721, Flask, Gemini API, Django, Leaflet.js, sqflite, Google Drive API.
+Dart, Flutter, Next.js, Prisma, Tailwind CSS, shadcn/ui, NextAuth, Solidity, Web3/MetaMask, ERC-721, Flask, Gemini API, Django, Leaflet.js, sqflite, Google Drive API, **AWS EC2 (personal, free tier — self-hosts a personal backend server, maintained with PM2)**, Vercel (hosts/maintains portfolio + DineFlow), Cloudflare (hosts/maintains).
+
+Note: this personal AWS EC2 usage is real and defensible ("I run a personal backend on EC2 free tier with PM2") but is separate from and should not be conflated with the earlier finding that work/PropGoto-side AWS usage is unverified (only OCI's S3-compatible API was found there). If AWS goes on a resume, it should be scoped honestly to personal-project hosting, not implied as production platform experience at work.
 
 ### Corrected — not evidenced as your work at all, still don't claim
 The pa-cron scheduler/timezone engine itself (teammate's work, no pairing claimed), the maintenance-lock-during-restore feature (teammate's work, no pairing claimed), real AWS EC2 (no evidence found anywhere — only OCI's S3-compatible API is evidenced), ChromaDB/OpenAI semantic search (not found in any investigated repo — locate or drop).
 
 ### Learning / read about — NEVER on resume, Gaps only
-`[VERIFY in interview]`
+Deeper cloud infrastructure & DevOps practice (beyond personal EC2/PM2/Vercel/Cloudflare hosting) — user is actively learning this but it is not yet shipped/production-grade experience. If a JD wants strong DevOps/infra (Kubernetes, IaC, multi-region orchestration, observability stacks, etc.), that is a real Gap — do not stretch the personal EC2/PM2 hosting to cover it.
 
 ---
 
@@ -172,18 +174,21 @@ The pa-cron scheduler/timezone engine itself (teammate's work, no pairing claime
 1. The RabbitMQ bullet's "5,000+ records in under 15 seconds (~400 records/sec)" has no evidence anywhere in the repo — no benchmark, no test, no logged timing. This is a Rule 4 violation as it stands (unsourced number). Needs to be removed or replaced with a real measurement.
 2. "15 worker threads" should be "17" if kept at all, or softened.
 3. The RabbitMQ bullet's framing ("re-architected... from a synchronous JavaScript pipeline") is not supported — the service was Python/RabbitMQ from its first commit; you were an early core contributor (~27%), not the sole architect of a migration.
-4. "AWS (EC2, S3)" in the tools row is not accurate — the real integration is Oracle Cloud's S3-compatible API via boto3. No EC2 evidence anywhere.
+4. "AWS (EC2, S3)" in the tools row, if meant as work/PropGoto experience, is not accurate — the real work-side integration is Oracle Cloud's S3-compatible API via boto3. However, real personal-project AWS experience does exist (EC2 free-tier, PM2-managed) — if AWS goes on the resume, scope it honestly to personal-project hosting, not implied work platform experience.
 5. The portfolio's AI/ChromaDB semantic-search claim for the core API has no code evidence in `backend-server` — needs locating or dropping.
 
 **Resolved via interview:**
 - Mentoring: ~5-6 junior engineers on the team, via pairing and code review — for anyone on the team, the user reviews/verifies their work when they return a task. Confirms and strengthens the existing base-resume mentoring claim with a concrete number.
 - Cristy AI (Finio) = self-hosted Ollama running a Qwen model, with custom adaptation/prompting for financial analysis — not a from-scratch trained model, not a hosted API.
 - TOTP/2FA and CRA→Vite migration: user paired on implementation, teammate held the commit — kept on resume as collaborative work, worded as "collaborated on" not "built"/"led" solo.
+- Next Wave internship: `[no metric]` — no recall of dataset size/dashboard count/decision influenced. Keep existing generic bullets.
+- envault: ~250 npm downloads as of now (npm-stats-confirmed spike of 173 in one week, user's running estimate ~250 total) — caveat that npm counts include CI/bot traffic.
+- Finio: private use, ~10-15 users (family/friends).
+- DineFlow: demo-stage only, built with multi-tenant architecture toward an eventual own-business use case, no real transaction volume yet.
+- HackGoto and ShareGoto confirmed as two separate, real hackathon wins — not the same event.
+- Momentum: fully built by user, never publicly hosted, released as open-source instead — prompt→Gemini image generation→cron-scheduled auto-posting across Instagram/WhatsApp/Meta-linked accounts and LinkedIn.
+- Skills honesty pass: real personal AWS EC2 (free tier, PM2-managed) + Vercel/Cloudflare hosting added to "side projects" tier; deeper cloud infra/DevOps practice (Kubernetes, IaC, observability, etc.) flagged to "Learning/read about" — a real Gap if a JD wants strong DevOps.
 
-**Open questions still needing your input (not derivable from code):**
-- Next Wave internship: dataset size, dashboard count, any decision influenced.
-- DineFlow/envault/Finio: any real usage numbers beyond the demo/npm listing.
-- HackGoto vs ShareGoto naming — same thing, different label?
-- Skills honesty pass — final tiering confirmation, especially anything in "learning/read about."
-- Collections & reconciliation module — which repo, not yet verified.
-- Team size context: you said "2–3 engineers, manager mostly manages" — this describes your day-to-day pod, but commit history shows much larger repo-wide teams (10–20+ contributors per repo). Worth clarifying for interview answers: your immediate team vs the platform's total engineering headcount are different numbers.
+**Still open (lower priority, only worth chasing for a specific JD):**
+- Collections & reconciliation module — which repo it lives in hasn't been verified yet (likely `backend-server`, not yet located specifically).
+- Team size context: user's immediate day-to-day pod is ~2-3 engineers plus a manager who mostly manages rather than codes — but repo-wide commit history shows much larger total teams (10-20+ contributors per repo). Keep these two numbers distinct in interview answers — "my immediate team" vs "the platform's total engineering org."
