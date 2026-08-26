@@ -86,14 +86,6 @@ Verify with `wc -c base_stable_template.tex out/<slug>.tex` before reporting.
 **To add anything, cut something of similar length first.** If you cannot fit a
 keyword without breaking a cap, it goes in Gaps — not in the resume.
 
-## RULE 4 — Truth
-
-1. Every factual claim must trace to `master.md` or the base template. Never
-   invent a technology, metric, employer, date, team size, or scope.
-2. If the JD wants something I don't have, it goes in **Gaps**. Never onto the page.
-   Not as "familiar with", not as "exposure to", not buried in a skills row.
-3. Never change "2.6 years" or imply more experience than that.
-4. Never fabricate numbers. If `master.md` has no metric, write the bullet without one.
 
 ## RULE 5 — Keyword optimization (the actual work)
 
@@ -121,75 +113,3 @@ keyword without breaking a cap, it goes in Gaps — not in the resume.
   full-stack/software-engineering variant (e.g. "Full Stack Engineer",
   "Software Engineer, Full Stack"). Never "Senior" anything.
 - ATS safety: no new packages, no icons, no glyphs, no tables, no columns.
-
----
-
-## RULE 7 — Stretch JDs (unrelated to my current work or skills)
-
-Sometimes I'll paste a JD for a role I'm not currently qualified for on paper —
-different domain, different stack, skills I'm still learning. I intend to
-close that gap myself before any interview (self-study, prep). These get
-different handling:
-
-1. **Detect it.** A stretch JD is one where the core requirements don't match
-   `master.md`'s "shipped to production" or "used in side projects" tiers —
-   it leans on the "learning / read about" tier, or something not in
-   `master.md` at all.
-2. **Output goes to `out/stretch/<slug>.tex`, never `out/<slug>.tex`.**
-3. **Rules 1, 2, and 3 still apply in full — no exceptions here.** Frozen
-   zones stay frozen, editable zones stay the only things touched, and every
-   Rule 3 structural cap (one page, exact bullet counts, byte-size ceiling,
-   etc.) is enforced exactly as for a normal resume. A stretch JD changes
-   WHAT keywords are honest to use — never the layout, structure, or length.
-   No new UI, no new sections, no font/spacing tricks to fit more in.
-   `base_stable_template.tex` itself is NEVER touched — for a stretch JD you
-   still only ever copy from it into `out/stretch/<slug>.tex`, exactly like
-   the normal flow. There is no scenario, stretch or otherwise, where the
-   base template gets edited.
-4. **Relaxed keyword rule, this tier only:** you may list skills from the
-   "learning / read about" tier in the skills row / bullets as if in active
-   use, since I plan to actually learn them before an interview. This is the
-   ONE exception to Rule 5.6 (no stuffing) and to treating "learning" as
-   Gaps-only.
-5. **Everything else in Rule 4 (Truth) still holds, no exceptions:**
-   - Never invent an employer, project, date, team size, or metric.
-   - Never change "2.6 years" or imply more experience than I have.
-   - Never claim ownership/authorship of something `master.md` says was a
-     teammate's work, or something with no evidence at all.
-   - The "stretch" allowance is about **skills I intend to learn**, not about
-     fabricating history.
-6. **Frozen on write — this is absolute, stronger than the base-template
-   freeze:**
-   - The moment `out/stretch/<slug>.tex` is written, it is frozen forever.
-   - **No agent may ever edit, regenerate, or overwrite it again** — not on a
-     follow-up request, not to "fix" something, not even if I ask casually.
-     If I want changes, I edit it myself.
-   - **Never `git add`, `git commit`, or `git push` anything under
-     `out/stretch/`.** These files stay untracked/local-only unless I
-     explicitly do it myself.
-   - If I ask you to touch an existing file under `out/stretch/`, refuse and
-     remind me this folder is locked — don't ask "are you sure," just decline
-     and tell me why.
-
----
-
-## Output
-
-Write the file, then report in chat — **do not print the .tex**:
-
-1. **Size**: base bytes vs out bytes
-2. **Structure check**: each cap from Rule 3, actual vs limit
-3. **Keywords matched**: JD terms now truthfully present
-4. **Gaps**: JD requirements I cannot claim — so I can prep for the interview
-5. **Changes**: max 6 lines, what you altered and why
-
-Then append one row to `log.md`:
-`| date | company | role | slug | top gaps |`
-
-## Never
-- Never edit `base_stable_template.tex`
-- Never start from a previous `out/*.tex`
-- Never shrink font, margins, or spacing to fit
-- Never write a cover letter unless I ask
-- Never edit, regenerate, or overwrite anything under `out/stretch/` once written
-- Never `git add`/`commit`/`push` anything under `out/stretch/`

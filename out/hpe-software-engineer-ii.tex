@@ -1,0 +1,222 @@
+%==============================================================
+%  Kuzhandayan K V — Software Engineer
+%  Theme: "Broadsheet" — serif display type, one accent, quiet hierarchy
+%  Single page | Parser-safe (single column, real text, no icons)
+%
+%  COMPILE WITH pdfLaTeX (not XeLaTeX / LuaLaTeX).
+%  DOWNLOAD via Overleaf's Download button — never print-to-PDF,
+%  which strips word spacing out of table cells.
+%
+%  >>> SPACING KNOBS <<<
+%   1) \titlespacing*{\section}      — space around section headings
+%   2) itemsep in \resumeItemListStart — gap between bullets
+%   3) \entrygap                     — gap between two entries
+%==============================================================
+\documentclass[letterpaper,10pt]{extarticle}
+\pdfminorversion=7
+
+\usepackage[utf8]{inputenc}
+\usepackage{cmap}          % MUST precede fontenc, or cmap warns and skips fonts
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[top=0.26in,bottom=0.18in,left=0.42in,right=0.42in]{geometry}
+\usepackage{titlesec}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{microtype}      % BEFORE babel, or \showhyphens warns
+\usepackage[english]{babel}
+\usepackage[sfdefault]{roboto}
+\usepackage{charter}   % serif — display type only
+\newcommand{\dsp}{\fontfamily{bch}\selectfont}
+
+%--------------------------------------------------------------
+% PARSER SAFETY BLOCK  <<< DO NOT REMOVE >>>
+%--------------------------------------------------------------
+% (cmap is loaded above, before fontenc — required for it to work)
+\input{glyphtounicode}
+\pdfgentounicode=1                          % <- the critical line
+\DisableLigatures[f]{encoding = *, family = *}
+%--------------------------------------------------------------
+
+\linespread{0.90}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\setlength{\footskip}{0pt}\pagestyle{empty}
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+%-------------------------
+% Palette — restrained: one accent, three greys
+%-------------------------
+\definecolor{ink}{HTML}{0B1220}
+\definecolor{body}{HTML}{1E2733}
+\definecolor{accent}{HTML}{0E3A6B}
+\definecolor{muted}{HTML}{717A87}
+\definecolor{hairline}{HTML}{CBD2DA}
+\color{body}
+
+\hypersetup{colorlinks=true,urlcolor=accent,linkcolor=accent}
+
+%-------------------------
+% Section headings
+%-------------------------
+\newif\ifsecrule \secrulefalse   % first section draws no rule
+\titleformat{\section}
+  {\ifsecrule{\color{hairline}\titlerule[0.8pt]}\else\global\secruletrue\fi\vspace{1.5pt}\small\bfseries\dsp\color{accent}}
+  {}{0em}
+  {\MakeUppercase}
+\titlespacing*{\section}{0pt}{3.5pt}{1.5pt}
+
+%-------------------------
+% Building blocks
+%-------------------------
+\newcommand{\entrygap}{\vspace{0pt}}
+\newcommand{\rowwidth}{\dimexpr\textwidth-0.14in\relax}
+
+\newcommand{\resumeSubheading}[4]{%
+  \item
+  \begin{tabular*}{\rowwidth}{@{}l@{\extracolsep{\fill}}r@{}}
+    \textbf{\small\color{ink}#1} & {\small\color{muted}#2} \\[1.5pt]
+    {\small\color{body}#3} & {\small\itshape\color{muted}#4} \\
+  \end{tabular*}\vspace{0.5pt}
+}
+
+\newcommand{\projectHeading}[2]{%
+  \item
+  \begin{tabular*}{\rowwidth}{@{}l@{\extracolsep{\fill}}r@{}}
+    \textbf{\small\color{ink}#1} & {\small\color{muted}#2} \\
+  \end{tabular*}\vspace{0.5pt}
+}
+
+\newcommand{\bull}{{\color{muted}\small\textendash}}
+\newcommand{\sep}{\hspace{4.5pt}\textperiodcentered\hspace{4.5pt}}
+
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.19in,itemsep=0.6pt,parsep=0pt,topsep=1pt,label={\bull}]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{1pt}}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.14in,label={},itemsep=0pt,parsep=0pt,topsep=0pt]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItem}[1]{\item{\small#1}}
+\newcommand{\hl}[1]{\textbf{\color{ink}#1}}
+\newcommand{\stack}[1]{\item{\small\textbf{\color{muted}Stack}\hspace{5pt}{\color{body}#1}}}
+
+\newcommand{\skillRow}[2]{\item{\small\textbf{\color{ink}#1} #2}}
+\newcommand{\skillListStart}{\begin{itemize}[leftmargin=0.14in,label={},itemsep=0.9pt,parsep=0pt,topsep=1pt]}
+\newcommand{\skillListEnd}{\end{itemize}}
+
+%==============================================================
+\begin{document}
+
+%----------MASTHEAD----------
+{\dsp\fontsize{24}{26}\selectfont\bfseries\color{ink}Kuzhandayan K V}\\[3pt]
+{\small\color{body}Full Stack Software Engineer}\\[4pt]
+{\small\color{muted}%
+  +91 7812846798 \sep
+  \href{mailto:sabbari.kv013@gmail.com}{sabbari.kv013@gmail.com} \sep
+  Chennai, India
+}\\[2pt]
+{\small\color{muted}%
+  \href{https://kuzhandayan-portfolio.site}{kuzhandayan-portfolio.site} \sep
+  \href{https://github.com/kuzhandayan}{github.com/kuzhandayan} \sep
+  \href{https://www.linkedin.com/in/kuzhandayan-k-v-16ab32312}{linkedin.com/in/kuzhandayan-k-v}
+}
+\vspace{4pt}
+\par\noindent{\color{accent}\rule{\textwidth}{1.6pt}}
+
+%-----------SUMMARY-----------
+\section{Summary}
+{\small Full Stack Software Engineer with 2.6 years designing, coding, and \hl{debugging} software systems on multi-tenant SaaS platforms across React, Node.js, Express, PostgreSQL, and Python (FastAPI). Owned the BrokerGOTO CRM module end to end and core-contributed to a RabbitMQ-driven Python async pipeline for high-volume bulk data processing. Designated Git Approver with 150+ pull requests reviewed, \hl{collaborating} with cross-functional teams to deliver reliable, high-quality solutions.\par}
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+\skillListStart
+\skillRow{Languages}{JavaScript, TypeScript, Python, SQL, Dart}
+\skillRow{Frontend}{React, Next.js, Flutter, MUI (Material UI), Tailwind CSS, shadcn/ui}
+\skillRow{Backend}{Node.js, Express, FastAPI, REST APIs, Microservices, JWT Authentication}
+\skillRow{Databases}{PostgreSQL, Chroma, Schema Design \& Optimization}
+\skillRow{Tools}{Git, GitHub, Docker, RabbitMQ, AWS EC2 (personal), Linux, CI/CD, Agile/Scrum}
+\skillListEnd
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+  {Property Automate Pvt. Ltd.}{Feb 2024 -- Present}
+  {Software Engineer}{Chennai, India}
+\resumeItemListStart
+  \resumeItem{Architect and maintain \hl{multi-tenant} SaaS on React, Node.js, Express, and PostgreSQL, delivering scalable REST APIs and optimized database queries across multiple production modules.}
+  \resumeItem{Developed the \hl{BrokerGOTO CRM} module end to end --- broker lead intake, sourcing and proposal workflows, brokerage contracts, and automated commission invoicing --- with a contract lifecycle status board.}
+  \resumeItem{Core contributor to a \hl{RabbitMQ-driven Python (FastAPI) worker service} handling asynchronous Excel/CSV imports, validation, and report generation, using a vectorized, DataFrame-first pipeline with chunked writes.}
+  \resumeItem{Lead task planning and mentor junior engineers, and serve as designated \hl{Git Approver}, reviewing \hl{150+ pull requests} to uphold code quality and production-ready deployments.}
+  \resumeItem{\hl{Collaborate} with cross-functional teams on design proposals and \hl{debug} production issues, implementing JWT authentication, role-based authorization, and reusable React components.}
+\resumeItemListEnd
+\entrygap
+
+\resumeSubheading
+  {Next Wave ERP Solutions}{Jun 2023 -- Aug 2023}
+  {Data Analytics Intern}{Thiruvallur, India}
+\resumeItemListStart
+  \resumeItem{Analyzed business datasets in Python and Excel, building Tableau dashboards that surfaced key trends for stakeholder decisions.}
+  \resumeItem{Prepared recurring reports and visual summaries that streamlined how business insights were communicated to non-technical stakeholders.}
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Projects}
+\resumeSubHeadingListStart
+
+\projectHeading{DineFlow \textnormal{\color{muted}--- Multi-Tenant Restaurant SaaS}}{\href{https://dine-flow-app.vercel.app}{Live Demo}}
+\resumeItemListStart
+  \resumeItem{Built a cloud-based multi-tenant restaurant POS and management platform supporting unlimited restaurants from a single codebase.}
+  \resumeItem{Developed modules for order management, GST billing, inventory tracking, staff role management, and centralized platform administration.}
+  \stack{Next.js, React, TypeScript, PostgreSQL, Prisma, Tailwind CSS, Docker.}
+\resumeItemListEnd
+\entrygap
+
+\projectHeading{envault \textnormal{\color{muted}--- Zero-Knowledge Secrets CLI}}{\href{https://www.npmjs.com/package/envault-sync}{npm} \sep \href{https://kuzhandayan.github.io/envault-docs/}{Docs}}
+\resumeItemListStart
+  \resumeItem{Built a CLI tool that securely syncs .env files across machines using a private GitHub repo as encrypted storage with zero-knowledge architecture.}
+  \resumeItem{Implemented AES-256-GCM encryption with scrypt key derivation, ensuring data cannot be decrypted without the master password --- never stored anywhere.}
+  \stack{Node.js, Commander, Octokit, AES-256-GCM, scrypt, npm.}
+\resumeItemListEnd
+\entrygap
+
+\projectHeading{Finio \textnormal{\color{muted}--- Personal Finance Mobile App}}{}
+\resumeItemListStart
+  \resumeItem{Developed a Flutter application that automatically reads Indian bank and UPI SMS transactions to track expenses and budgets.}
+  \resumeItem{Built secure on-device storage with Google Drive backup, Excel/PDF export, and AI-powered financial insights.}
+  \stack{Flutter, Dart, SQLite, Provider, Google Drive API.}
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------ACHIEVEMENTS-----------
+\section{Achievements}
+\begin{itemize}[leftmargin=0.19in,itemsep=1.2pt,parsep=0pt,topsep=1pt,label={\bull}]
+  \item {\small\hl{HackGoto 2025 Winner} --- Led a four-member team to build an enterprise solution during the company hackathon and secured first place.}
+  \item {\small\hl{Cityscape Global 2025 Finalist, Riyadh} --- Built an AI-powered assistant using Model Context Protocol (MCP) and vector databases for secure enterprise knowledge retrieval.}
+\end{itemize}
+
+%-----------EDUCATION-----------
+\section{Education}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+  {SRM Institute of Science and Technology}{May 2026 -- Present}
+  {M.Tech, AI and Data Science (Working Professional)}{Chennai, India}
+
+\resumeSubheading
+  {Sri Venkateswara College of Engineering}{Aug 2021 -- Jun 2024}
+  {B.Tech, Artificial Intelligence and Data Science}{Chennai, India}
+
+\resumeSubHeadingListEnd
+
+\end{document}
