@@ -87,7 +87,7 @@ Verify with `wc -c base_stable_template.tex out/<slug>.tex` before reporting.
 keyword without breaking a cap, it goes in Gaps — not in the resume.
 
 
-## RULE 5 — Keyword optimization (the actual work)
+## RULE 4 — Keyword optimization (the actual work)
 
 1. **Mirror the JD's exact wording** where it truthfully matches mine — write
    "REST APIs" if they say that, "RESTful services" if they say that. Pick one;
@@ -105,7 +105,7 @@ keyword without breaking a cap, it goes in Gaps — not in the resume.
 6. **No stuffing.** If a keyword can't sit in a natural, readable sentence, leave
    it out. A human reads this after the ATS does.
 
-## RULE 6 — Positioning
+## RULE 5 — Positioning
 
 - Always **Full Stack Software Engineer**. Never backend-only. Never "Data Engineer"
   or "Data Scientist", even if the JD is AI/data flavoured.
